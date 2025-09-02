@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Космическая Империя</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="cabinet-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🚀 Космическая Империя</h2>
+            </div>
+            <div class="nav-menu">
+                <span class="user-greeting" id="userGreeting">Добро пожаловать!</span>
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="#" id="logoutBtn" class="nav-link">Выйти</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="cabinet-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Панель управления</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="sidebar-link active" data-section="dashboard">
+                    📊 Обзор империи
+                </a>
+                <a href="#planets" class="sidebar-link" data-section="planets">
+                    🌍 Мои планеты
+                </a>
+                <a href="#resources" class="sidebar-link" data-section="resources">
+                    💰 Ресурсы
+                </a>
+                <a href="#research" class="sidebar-link" data-section="research">
+                    🔬 Исследования
+                </a>
+                <a href="#trade" class="sidebar-link" data-section="trade">
+                    🤝 Торговля
+                </a>
+                <a href="#settings" class="sidebar-link" data-section="settings">
+                    ⚙️ Настройки
+                </a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <!-- Секция Дашборда -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="section-header">
+                    <h2>Обзор вашей империи</h2>
+                    <p>Статистика и основные показатели</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🌍</div>
+                        <div class="stat-info">
+                            <h3 id="planetsCount">0</h3>
+                            <p>Планет под контролем</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3 id="totalScore">0</h3>
+                            <p>Общий рейтинг</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <h3 id="userRank">#0</h3>
+                            <p>Место в рейтинге</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resources-panel">
+                    <h3>Ресурсы империи</h3>
+                    <div class="resources-list">
+                        <div class="resource-item">
+                            <span class="resource-name">⚡ Энергия:</span>
+                            <span class="resource-value" id="energyValue">0</span>
+                        </div>
+                        <div class="resource-item">
+                            <span class="resource-name">⛰️ Минералы:</span>
+                            <span class="resource-value" id="mineralsValue">0</span>
+                        </div>
+                        <div class="resource-item">
+                            <span class="resource-name">💨 Кислород:</span>
+                            <span class="resource-value" id="oxygenValue">0</span>
+                        </div>
+                        <div class="resource-item">
+                            <span class="resource-name">💧 Вода:</span>
+                            <span class="resource-value" id="waterValue">0</span>
+                        </div>
+                        <div class="resource-item">
+                            <span class="resource-name">🍎 Еда:</span>
+                            <span class="resource-value" id="foodValue">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция Планет -->
+            <section id="planets-section" class="content-section">
+                <div class="section-header">
+                    <h2>Мои планеты</h2>
+                    <p>Управление вашими космическими колониями</p>
+                </div>
+
+                <div id="planetsList" class="planets-grid">
+                    <div class="empty-state">
+                        <p>У вас пока нет планет</p>
+                        <button id="createFirstPlanetBtn" class="btn btn-primary">
+                            Создать первую планету
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Модальное окно создания планеты -->
+                <div id="createPlanetModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Создание новой планеты</h3>
+                            <span class="close">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <form id="createPlanetForm">
+                                <div class="form-group">
+                                    <label for="planetName">Название планеты *</label>
+                                    <input type="text" id="planetName" name="planetName" required 
+                                           placeholder="Введите название планеты">
+                                </div>
+                                <div class="form-group">
+                                    <label for="biomeType">Тип биома *</label>
+                                    <select id="biomeType" name="biomeType" required>
+                                        <option value="">Выберите биом</option>
+                                        <option value="forest">🌲 Лесной</option>
+                                        <option value="grassland">🌾 Равнинный</option>
+                                        <option value="mountain">⛰️ Горный</option>
+                                        <option value="desert">🏜️ Пустынный</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-full">
+                                    Создать планету
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Остальные секции будут добавлены позже -->
+            <section id="resources-section" class="content-section">
+                <h2>Управление ресурсами</h2>
+                <p>Раздел в разработке...</p>
+            </section>
+
+            <section id="research-section" class="content-section">
+                <h2>Исследования</h2>
+                <p>Раздел в разработке...</p>
+            </section>
+
+            <section id="trade-section" class="content-section">
+                <h2>Торговая площадка</h2>
+                <p>Раздел в разработке...</p>
+            </section>
+
+            <section id="settings-section" class="content-section">
+                <h2>Настройки аккаунта</h2>
+                <p>Раздел в разработке...</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cabinet.js"></script>
+    <script src="js/planets.js"></script>
+</body>
+</html>
